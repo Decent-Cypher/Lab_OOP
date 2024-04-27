@@ -1,5 +1,3 @@
-import java.sql.Wrapper;
-
 public class TestPassingParameter {
     public static void main(String[] args) {
         DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
