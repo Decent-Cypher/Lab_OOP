@@ -1,3 +1,5 @@
+package hust.soict.dsai.aims.disc;
+
 public class DigitalVideoDisc {
     private String title;
     private String category;
@@ -53,11 +55,18 @@ public class DigitalVideoDisc {
         this.id = nbDigitalVideoDiscs;
         nbDigitalVideoDiscs++;
     }
-    public boolean isMatch(String title){
-        if (this.title.equals(title)){
-            return true;
+    public boolean isMatch(String search) {
+        boolean matched = false;
+        String[] searchArr = search.split(" ", 0);
+        for (String word: searchArr) {
+            String lowerCaseTitle = title.toLowerCase();
+            int index = lowerCaseTitle.indexOf(word.toLowerCase());
+            if (index != -1) {
+                matched = true;
+                break;
+            }
         }
-        return false;
+        return matched;
     }
     public boolean isMatch(int id){
         if (this.id == id){
@@ -68,7 +77,7 @@ public class DigitalVideoDisc {
 
     @Override
     public String toString() {
-        return "DigitalVideoDisc{" +
+        return "hust.soict.dsai.aims.disc.DigitalVideoDisc{" +
                 "title='" + title + '\'' +
                 ", category='" + category + '\'' +
                 ", director='" + director + '\'' +

@@ -1,3 +1,6 @@
+package hust.soict.dsai.aims.cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private int qtyOrdered = 0;
@@ -14,7 +17,7 @@ public class Cart {
         qtyOrdered++;
         System.out.println("The disc has been added");
     }
-    public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
         if (qtyOrdered + dvdList.length <= 20){
             for (DigitalVideoDisc dvd: dvdList){
                 addDigitalVideoDisc(dvd);
