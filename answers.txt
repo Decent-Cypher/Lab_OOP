@@ -1,0 +1,8 @@
+Question: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer in this case?
+Answer: The second way (varargs) provide more flexibility in terms of calling syntax, allowing callers to pass individual objects instead of an array explicitly. And although negligible, this method might incur slightly more overhead due to array creation at runtime. That's why I would prefer passing the array as parameter.
+Question: Is Java a Pass By Value or Pass By Reference programming language?
+Answer: Java is a pass-by-value language. When you pass a variable to a method in Java, a copy of the variable's value is passed, not the variable itself. This means that changes made to the parameter inside the method do not affect the original variable outside of the method.
+Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+Answer: It's because Java is a Pass By Value programming language, when they are passed into the swap function, a copy is created for each object reference, and it doesn't affect the original ones.
+Question: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+Answer: A copy of the reference to the object is passed to the method, which means it would operate on that same object passed into it. As a result, any changes made to the object's state inside the method will affect the original one (the call to the title setter).
