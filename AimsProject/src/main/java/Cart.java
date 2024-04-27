@@ -53,4 +53,9 @@ public class Cart {
         }
         return cost;
     }
+    public void print(){
+        for (int i = 0; i < qtyOrdered; i++){
+            System.out.println(itemsOrdered[i].toString());
+        }
+    }
 }
