@@ -1,5 +1,4 @@
-
-public class Aims {
+public class CartTest {
     public static void main(String[] args) {
         Cart anOrder = new Cart();
         // Testing the addDigitalVideoDisc method

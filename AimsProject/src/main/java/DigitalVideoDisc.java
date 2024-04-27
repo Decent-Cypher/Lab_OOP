@@ -53,6 +53,18 @@ public class DigitalVideoDisc {
         this.id = nbDigitalVideoDiscs;
         nbDigitalVideoDiscs++;
     }
+    public boolean isMatch(String title){
+        if (this.title.equals(title)){
+            return true;
+        }
+        return false;
+    }
+    public boolean isMatch(int id){
+        if (this.id == id){
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public String toString() {

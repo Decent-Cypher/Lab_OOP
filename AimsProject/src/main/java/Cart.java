@@ -58,4 +58,28 @@ public class Cart {
             System.out.println(itemsOrdered[i].toString());
         }
     }
+    public void searchCartByTitle(String title){
+        boolean check = false;
+        for (int i = 0; i < qtyOrdered; i++){
+            if (itemsOrdered[i].isMatch(title)){
+                System.out.println(itemsOrdered[i].toString());
+                check = true;
+            }
+        }
+        if (!check){
+            System.out.println("There is no DVD like that");
+        }
+    }
+    public void searchCartByID(int id){
+        boolean check = false;
+        for (int i = 0; i < qtyOrdered; i++){
+            if (itemsOrdered[i].isMatch(id)){
+                System.out.println(itemsOrdered[i].toString());
+                check = true;
+            }
+        }
+        if (!check){
+            System.out.println("There is no DVD like that");
+        }
+    }
 }
