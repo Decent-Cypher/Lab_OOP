@@ -35,4 +35,24 @@ public abstract class Media {
         this.category = category;
         this.cost = cost;
     }
+    public boolean isMatch(String search) {
+        boolean matched = false;
+        String[] searchArr = search.split(" ", 0);
+        for (String word: searchArr) {
+            String title = this.getTitle();
+            String lowerCaseTitle = title.toLowerCase();
+            int index = lowerCaseTitle.indexOf(word.toLowerCase());
+            if (index != -1) {
+                matched = true;
+                break;
+            }
+        }
+        return matched;
+    }
+    public boolean isMatch(int id){
+        if (this.getId() == id){
+            return true;
+        }
+        return false;
+    }
 }

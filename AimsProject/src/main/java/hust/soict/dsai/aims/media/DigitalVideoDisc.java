@@ -27,26 +27,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
         this.setId(nbDigitalVideoDiscs);
         nbDigitalVideoDiscs++;
     }
-    public boolean isMatch(String search) {
-        boolean matched = false;
-        String[] searchArr = search.split(" ", 0);
-        for (String word: searchArr) {
-            String title = this.getTitle();
-            String lowerCaseTitle = title.toLowerCase();
-            int index = lowerCaseTitle.indexOf(word.toLowerCase());
-            if (index != -1) {
-                matched = true;
-                break;
-            }
-        }
-        return matched;
-    }
-    public boolean isMatch(int id){
-        if (this.getId() == id){
-            return true;
-        }
-        return false;
-    }
+
     @Override
     public String toString() {
         return "hust.soict.dsai.aims.media.DigitalVideoDisc{" +
