@@ -26,6 +26,11 @@ public class Cart {
         }
     }
 
+    public void placeOrder(){
+        System.out.println("The order has been created");
+        itemsOrdered.clear();
+    }
+
     public float totalCost(){
         float cost = 0;
         int qtyOrdered = itemsOrdered.size();
@@ -34,30 +39,46 @@ public class Cart {
         }
         return cost;
     }
-    public void searchCartByTitle(String title){
-        boolean check = false;
+    public Media searchCartByTitle(String title){
         int qtyOrdered = itemsOrdered.size();
         for (int i = 0; i < qtyOrdered; i++){
             if (itemsOrdered.get(i).isMatch(title)){
-                System.out.println(itemsOrdered.get(i).toString());
-                check = true;
+                // System.out.println(itemsOrdered.get(i).toString());
+                return itemsOrdered.get(i);
             }
         }
-        if (!check){
-            System.out.println("There is no DVD like that");
-        }
+        return null;
     }
-    public void searchCartByID(int id){
-        boolean check = false;
+    public Media searchCartByID(int id){
         int qtyOrdered = itemsOrdered.size();
         for (int i = 0; i < qtyOrdered; i++){
             if (itemsOrdered.get(i).isMatch(id)){
-                System.out.println(itemsOrdered.get(i).toString());
-                check = true;
+                // System.out.println(itemsOrdered.get(i).toString());
+                return itemsOrdered.get(i);
             }
         }
-        if (!check){
-            System.out.println("There is no DVD like that");
+        return null;
+    }
+    public void filterMedias(int id){
+        Media item = searchCartByID(id);
+        System.out.println(item);
+    }
+    public void filterMedias(String title){
+        Media item = searchCartByTitle(title);
+        System.out.println(item);
+    }
+    public void sortMedias(int option){
+        if (option == 1) {
+            itemsOrdered.sort(Media.COMPARE_BY_COST_TITLE);
+        }
+        else{
+            itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
+        }
+        display();
+    }
+    public void display(){
+        for (int i = 0; i < itemsOrdered.size(); i++){
+            System.out.println(itemsOrdered.get(i).toString());
         }
     }
 }

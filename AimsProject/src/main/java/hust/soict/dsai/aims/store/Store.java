@@ -26,9 +26,30 @@ public class Store {
         }
     }
 
-//    public void print(){
-//        for (int i = 0; i < quantity; i++){
-//            System.out.println(itemsInStore[i].toString());
-//        }
-//    }
+    public Media searchStoreByTitle(String title){
+        int qtyOrdered = itemsInStore.size();
+        for (int i = 0; i < qtyOrdered; i++){
+            if (itemsInStore.get(i).isMatch(title)){
+                // System.out.println(itemsInStore.get(i).toString());
+                return itemsInStore.get(i);
+            }
+        }
+        return null;
+    }
+    public Media searchStoreByID(int id){
+        int qtyOrdered = itemsInStore.size();
+        for (int i = 0; i < qtyOrdered; i++){
+            if (itemsInStore.get(i).isMatch(id)){
+                // System.out.println(itemsInStore.get(i).toString());
+                return itemsInStore.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void display(){
+        for (int i = 0; i < itemsInStore.size(); i++){
+            System.out.println(itemsInStore.get(i).toString());
+        }
+    }
 }
