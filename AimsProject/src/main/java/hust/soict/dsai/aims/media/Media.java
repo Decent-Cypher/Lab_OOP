@@ -1,5 +1,8 @@
 package hust.soict.dsai.aims.media;
 
+
+import java.util.Comparator;
+
 public abstract class Media {
     private int id;
     private String title;
@@ -35,6 +38,11 @@ public abstract class Media {
         this.category = category;
         this.cost = cost;
     }
+
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = Comparator.comparing(Media::getTitle).thenComparing(Media::getCost);
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = Comparator.comparing(Media::getCost).thenComparing(Media::getTitle);
+
+
     public boolean isMatch(String search) {
         boolean matched = false;
         String[] searchArr = search.split(" ", 0);
