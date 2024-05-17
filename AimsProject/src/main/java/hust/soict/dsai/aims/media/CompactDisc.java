@@ -30,6 +30,19 @@ public class CompactDisc extends Disc implements Playable{
             System.out.println("The track was already in the track list");
         }
     }
+
+    @Override
+    public String toString() {
+        return "CompactDisc{" +
+                "artist='" + artist + '\'' +
+                ", tracks=" + tracks + '\'' +
+                ", id=" + getId() + '\'' +
+                ", title='" + getTitle() + '\'' +
+                ", category='" + getCategory() + '\'' +
+                ", cost=" + getCost() +
+                "}\n";
+    }
+
     public void removeTrack(Track track){
         if (tracks.contains(track)){
             tracks.remove(track);

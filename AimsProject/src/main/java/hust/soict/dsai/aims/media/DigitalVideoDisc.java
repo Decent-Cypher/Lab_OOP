@@ -30,14 +30,14 @@ public class DigitalVideoDisc extends Disc implements Playable{
 
     @Override
     public String toString() {
-        return "hust.soict.dsai.aims.media.DigitalVideoDisc{" +
+        return "DigitalVideoDisc{" +
                 "title='" + this.getTitle() + '\'' +
                 ", category='" + this.getCategory() + '\'' +
                 ", director='" + director + '\'' +
                 ", length=" + length +
                 ", cost=" + this.getCost() +
                 ", id=" + this.getId() +
-                '}';
+                "}\n";
     }
     @Override
     public void play(){

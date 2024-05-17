@@ -1,16 +1,25 @@
 package hust.soict.dsai.aims;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.media.Media;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Aims {
     public static void main(String[] args) {
-        Cart anOrder = new Cart();
-        // Testing the addDigitalVideoDisc method
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-        DigitalVideoDisc[] dvdList = {dvd1, dvd2, dvd3};
-        anOrder.addDigitalVideoDisc(dvdList);
-        anOrder.searchCartByTitle("Aladin");
+        DigitalVideoDisc dvd = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        Book book = new Book(1, "Game of Thrones", "Adventure", 30.6f, new ArrayList<String>(Arrays.asList("Binh", "Khanh")));
+        CompactDisc cd = new CompactDisc("A case in Bohemia", "Mystery", 30.2f);
+        List<Media> mediae = new ArrayList<Media>();
+        mediae.add(cd);
+        mediae.add(dvd);
+        mediae.add(book);
+        for (Media m: mediae){
+            System.out.println(m.toString());
+        }
     }
 }

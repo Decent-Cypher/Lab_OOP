@@ -27,4 +27,15 @@ public class Book extends Media {
             System.out.println(authorName + "doesn't exist in the author list");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "authors=" + authors + '\'' +
+                ", id=" + getId() + '\'' +
+                ", title='" + getTitle() + '\'' +
+                ", category='" + getCategory() + '\'' +
+                ", cost=" + getCost() +
+                "}\n";
+    }
 }
