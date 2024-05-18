@@ -1,8 +1,69 @@
-Question: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compare to an array parameter. What do you prefer in this case?
-Answer: The second way (varargs) provide more flexibility in terms of calling syntax, allowing callers to pass individual objects instead of an array explicitly. And although negligible, this method might incur slightly more overhead due to array creation at runtime. That's why I would prefer passing the array as parameter.
-Question: Is Java a Pass By Value or Pass By Reference programming language?
-Answer: Java is a pass-by-value language. When you pass a variable to a method in Java, a copy of the variable's value is passed, not the variable itself. This means that changes made to the parameter inside the method do not affect the original variable outside of the method.
-Question: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
-Answer: It's because Java is a Pass By Value programming language, when they are passed into the swap function, a copy is created for each object reference, and it doesn't affect the original ones.
-Question: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
-Answer: A copy of the reference to the object is passed to the method, which means it would operate on that same object passed into it. As a result, any changes made to the object's state inside the method will affect the original one (the call to the title setter).
+Question:
+- Which classes are aggregates of other classes? Checking all constructors of whole classes if they initialize for their parts?
+
+Answer:
+    + Store aggregates Media through ArrayList<Media> itemsInStore.
+    + Cart aggregates Media through ArrayList<Media> itemsOrdered.
+    + CompactDisc aggregates Track through ArrayList<Track> tracks.
+
+Question:
+- When overriding the equals() method of the Object class, you will have to cast the Object parameter obj to the type of Object that you are dealing with. For example, in the Media class, you must cast the Object obj to a Media, and then check the equality of the two objects’ attributes as the above requirements (i.e. title for Media; title and length for Track). If the passing object is not an instance of Media, what happens?
+
+Answer:
+If the object obj is not an instance of Media, we should have a checking condition
+if (obj == null || getClass() != obj.getClass())}
+	return false;
+}
+Then we can cast the object to the Media type 
+
+Question: 
+Alternatively, to compare items in the cart, instead of using Comparator, we can use the
+Comparable interface and override the compareTo()method. You can refer to the Java docs to see the
+information of this interface.
+Suppose we are taking this Comparable interface approach.
+- What class should implement the Comparable interface?
+- In those classes, how should you implement the compareTo()method be to reflect the ordering that we
+want?
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this
+Comparable interface approach?
+- Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+
+Answer:
+1. The Media class should implement the Comparable interface because it is the base class for all media . This way, all subclasses of Media can inherit the comparison logic.
+2. We need to implement the compareTo() method in the Media class to reflect the ordering rules we want. We will also need to override compareTo() in the DVD class to apply a different ordering rule specific to each media type.
+3. While the Comparable interface only allows for one natural ordering, we can handle multiple ordering rules by using Comparators, as shown here:
+        public void sortByTitle() {
+            Collections.sort(itemsOrdered, COMPARE_BY_TITLE_COST);
+            System.out.println("Cart sorted by title.");
+        }
+
+        public void sortByCost() {
+            Collections.sort(itemsOrdered, COMPARE_BY_COST_TITLE);
+            System.out.println("Cart sorted by cost.");
+        }
+If we strictly use Comparable, we need to decide on one primary natural ordering.
+4. We can modify like this
+    @Override
+    public int compare(Media m1, Media m2) {
+        int costComparison = Float.compare(m2.getCost(), m1.getCost());
+        if (costComparison != 0) {
+            return costComparison;
+        } else {
+            return m1.getTitle().compareTo(m2.getTitle());
+        }
+    }
+to
+    @Override
+    public int compare(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        int titleComparison = dvd1.getTitle().compareTo(dvd2.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+
+        int lengthComparison = Integer.compare(dvd2.getLength(), dvd1.getLength());
+        if (lengthComparison != 0) {
+            return lengthComparison;
+        }
+
+        return Float.compare(dvd1.getCost(), dvd2.getCost());
+    }
