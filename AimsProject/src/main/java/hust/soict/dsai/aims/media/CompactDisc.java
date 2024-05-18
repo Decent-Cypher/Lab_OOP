@@ -60,6 +60,9 @@ public class CompactDisc extends Disc implements Playable{
         }
         return sum;
     }
+    public String getArtist(){
+        return artist;
+    }
     @Override
     public void play(){
         System.out.println(artist);
