@@ -25,6 +25,9 @@ public class Store {
             System.out.println("The media doesn't exist in the store");
         }
     }
+    public ArrayList<Media> getItemsInStore(){
+        return itemsInStore;
+    }
 
     public Media searchStoreByTitle(String title){
         int qtyOrdered = itemsInStore.size();
