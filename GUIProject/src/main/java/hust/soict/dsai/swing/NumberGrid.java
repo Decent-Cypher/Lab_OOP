@@ -1,16 +1,24 @@
 package hust.soict.dsai.swing;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NumberGrid extends JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class NumberGrid extends JFrame{
     private JButton[] btnNumbers = new JButton[10];
     private JButton btnDelete, btnReset;
     private JTextField tfDisplay;
 
     public NumberGrid() {
+
         tfDisplay = new JTextField();
         tfDisplay.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
@@ -21,6 +29,7 @@ public class NumberGrid extends JFrame {
         cp.setLayout(new BorderLayout());
         cp.add(tfDisplay, BorderLayout.NORTH);
         cp.add(panelButtons, BorderLayout.CENTER);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Number Grid");
         setSize(200, 200);
@@ -34,6 +43,7 @@ public class NumberGrid extends JFrame {
             panelButtons.add(btnNumbers[i]);
             btnNumbers[i].addActionListener(btnListener);
         }
+
         btnDelete = new JButton("DEL");
         panelButtons.add(btnDelete);
         btnDelete.addActionListener(btnListener);
@@ -47,24 +57,27 @@ public class NumberGrid extends JFrame {
         btnReset.addActionListener(btnListener);
     }
 
-    private class ButtonListener implements ActionListener {
+    private class ButtonListener implements ActionListener{
         @Override
-        public void actionPerformed (ActionEvent e) { String button = e.getActionCommand();
-            if(button.charAt(0) >= '0' && button.charAt(0) <= '9') { tfDisplay.setText(tfDisplay.getText() + button);
+        public void actionPerformed(ActionEvent e) {
+            String button = e.getActionCommand();
+            if(button.charAt(0) >= '0' && button.charAt(0) <= '9') {
+                tfDisplay.setText(tfDisplay.getText() + button);
             }
-            else if (button.equals("DEL")) { //handles the "DEL" case
-                if (tfDisplay.getText().length() <= 1){
-                    tfDisplay.setText("");
-                    return;
+            else if (button.equals("DEL")) {
+                //handle the DEL case
+                String onScreenDigits = tfDisplay.getText();
+                if (onScreenDigits.length() > 0) {
+                    tfDisplay.setText(onScreenDigits.substring(0, onScreenDigits.length() - 1));
                 }
-                tfDisplay.setText(tfDisplay.getText().substring(0, tfDisplay.getText().length()-1));
             }
             else {
+                //handle the C case
                 tfDisplay.setText("");
             }
         }
     }
     public static void main(String[] args){
-        NumberGrid a = new NumberGrid();
+        NumberGrid numberGrid = new NumberGrid();
     }
 }
