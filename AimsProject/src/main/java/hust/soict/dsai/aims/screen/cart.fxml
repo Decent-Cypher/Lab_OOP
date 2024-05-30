@@ -70,11 +70,11 @@
                   </RadioButton>
                </children>
             </HBox>
-            <TableView>
+            <TableView fx:id="tblMedia">
               <columns>
-                <TableColumn prefWidth="75.0" text="Title" />
-                <TableColumn prefWidth="75.0" text="Category" />
-                  <TableColumn prefWidth="75.0" text="Cost" />
+                <TableColumn fx:id="colMediaTitle" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="colMediaCategory" prefWidth="75.0" text="Category" />
+                  <TableColumn fx:id="colMediaCost" prefWidth="75.0" text="Cost" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
