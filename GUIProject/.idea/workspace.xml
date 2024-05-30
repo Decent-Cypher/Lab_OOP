@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0af16981-fb43-4872-8c92-17ed50602778" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/javafx/Painter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/javafx/PainterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/AWTAccumulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/AWTAccumulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/NumberGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/NumberGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/SwingAccumulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hust/soict/dsai/swing/SwingAccumulator.java" afterDir="false" />
-    </list>
+    <list default="true" id="0af16981-fb43-4872-8c92-17ed50602778" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
