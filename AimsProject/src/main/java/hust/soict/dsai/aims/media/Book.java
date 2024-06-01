@@ -9,6 +9,12 @@ public class Book extends Media {
         this.setId(id);
         this.authors = authors;
     }
+
+    public Book(int id, String title, String category, float cost) {
+        super(title, category, cost);
+        this.setId(id);
+    }
+
     public void addAuthor(String authorName){
         if (!authors.contains(authorName)){
             authors.add(authorName);

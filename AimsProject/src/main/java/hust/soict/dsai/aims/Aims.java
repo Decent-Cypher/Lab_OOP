@@ -1,12 +1,15 @@
 package hust.soict.dsai.aims;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import javafx.scene.control.*;
 
 public class Aims {
     private static final Store mainStore = new Store();
@@ -104,12 +107,24 @@ public class Aims {
             int choice = getIntegerInput("Pick your option");
             switch (choice) {
                 case 1:
-                    mainCart.addMedia(media);
+                    try {
+                        mainCart.addMedia(media);
+                    } catch (LimitExceededException ignored) {
+                    }
                     System.out.println("Added to cart.");
                     break;
                 case 2:
                     if (media instanceof Playable) {
-                        ((Playable) media).play();
+                        try {
+                            ((Playable) media).play();
+                        } catch (PlayerException e) {
+                            e.printStackTrace();
+                            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                            errorAlert.setTitle("Illegal Length");
+                            errorAlert.setHeaderText(null);
+                            errorAlert.setContentText("Length of item is less than or equal to 0");
+                            errorAlert.showAndWait();
+                        }
                     } else {
                         System.out.println("This media cannot be played.");
                     }
@@ -125,7 +140,10 @@ public class Aims {
         String title = getStringInput("Your title: ");
         Media media = mainStore.searchStoreByTitle(title);
         if (media != null) {
-            mainCart.addMedia(media);
+            try {
+                mainCart.addMedia(media);
+            } catch (LimitExceededException ignored) {
+            }
             System.out.println("Added to cart.");
         } else {
             System.out.println("Media not found.");
@@ -135,7 +153,16 @@ public class Aims {
         String title = getStringInput("Enter the title of the media:");
         Media media = mainStore.searchStoreByTitle(title);
         if (media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (PlayerException e) {
+                e.printStackTrace();
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Illegal Length");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("Length of item is less than or equal to 0");
+                errorAlert.showAndWait();
+            }
         } else {
             System.out.println("This media cannot be played or was not found.");
         }
@@ -186,7 +213,16 @@ public class Aims {
         String title = getStringInput("Enter the title of the media:");
         Media media = mainCart.searchCartByTitle(title);
         if (media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (PlayerException e) {
+                e.printStackTrace();
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Illegal Length");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("Length of item is less than or equal to 0");
+                errorAlert.showAndWait();
+            }
         } else {
             System.out.println("This media cannot be played or was not found.");
         }
